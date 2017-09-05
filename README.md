@@ -1,2 +1,1 @@
-# schematics-simple-image
-Terraform Bluemix simple image
+# Terraform Bluemix simple image
