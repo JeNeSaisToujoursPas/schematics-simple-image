@@ -15,7 +15,7 @@ provider "ibm" {
 }
 
 ##############################################################################
-# IBM SSH Key: For connecting to VMs
+# IBM SSH Key: For connecting to VMs - Creating a new ssh key
 ##############################################################################
 #resource "ibm_compute_ssh_key" "ssh_key" {
 #  label = "${var.key_label}"
@@ -23,6 +23,12 @@ provider "ibm" {
 #  # Public key, so this is completely safe
 #  public_key = "${var.public_key}"
 #}
+##############################################################################
+# IBM SSH Key: For connecting to VMs - Import an existing ssh key
+##############################################################################
+data "softlayer_ssh_key" "public_key" {
+    label = "Patricks Public Key"
+}
 
 ##############################################################################
 # Variables
@@ -74,7 +80,7 @@ resource "softlayer_virtual_guest" "centos_small_virtual_guest" {
   dedicated_acct_host_only = true,
   local_disk = false,
   ssh_keys = [
-      "${softlayer_ssh_key.patricks_public_key.id}"
+      "${data.softlayer_ssh_key.public_key.id}"
   ]
 }
   
