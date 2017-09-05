@@ -15,7 +15,7 @@ terraform {
 #}
 provider "softlayer" {
 		username = "${var.slusername}"
-		api_key = "${var.slapi_key}"
+		api_key = "${var.slapikey}"
 }
 
 ##############################################################################
