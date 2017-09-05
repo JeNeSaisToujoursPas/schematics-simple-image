@@ -8,7 +8,7 @@ terraform {
 # IBM Cloud Provider
 ##############################################################################
 # See the README for details on ways to supply these values
-provider "ibmcloud" {
+provider "ibm" {
   bluemix_api_key = "${var.bxapikey}"
   softlayer_username = "${var.slusername}"
   softlayer_api_key = "${var.slapikey}"
@@ -26,7 +26,7 @@ provider "ibmcloud" {
 ##############################################################################
 # IBM SSH Key: For connecting to VMs - Import an existing ssh key
 ##############################################################################
-data "ibmcloud_infra_ssh_key" "public_key" {
+data "ibm_infra_ssh_key" "public_key" {
     label = "Patricks Public Key"
 }
 # https://ibm-bluemix.github.io/tf-ibm-docs/v0.3-tf-v0.9.3/d/infra_ssh_key.html
@@ -81,7 +81,7 @@ resource "softlayer_virtual_guest" "centos_small_virtual_guest" {
   dedicated_acct_host_only = true,
   local_disk = false,
   ssh_keys = [
-      "${data.ibmcloud_infra_ssh_key.public_key.id}"
+      "${data.ibm_infra_ssh_key.public_key.id}"
   ]
 }
   
