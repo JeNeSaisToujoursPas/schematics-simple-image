@@ -8,7 +8,7 @@ terraform {
 # IBM Cloud Provider
 ##############################################################################
 # See the README for details on ways to supply these values
-provider "ibm" {
+provider "ibmcloud" {
   bluemix_api_key = "${var.bxapikey}"
   softlayer_username = "${var.slusername}"
   softlayer_api_key = "${var.slapikey}"
